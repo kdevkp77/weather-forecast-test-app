@@ -13,6 +13,15 @@ export default class SearchCity extends Vue {
       lat: place.geometry.location.lat(),
       lng: place.geometry.location.lng(),
     };
+    this.$emit('location-selected', this.selectedPlace);
+  }
+  //Click event to choose location
+  mapClicked(event: any) {
+    this.selectedPlace = {
+      lat: event.latLng.lat(),
+      lng: event.latLng.lng(),
+    };
+    this.$emit('location-selected', this.selectedPlace);
   }
 
 

@@ -1,7 +1,10 @@
 <template>
   <div class="home">
-    <SearchCity />
-    <WeatherForecast />
+    <!-- Pass the event handler to SearchCity -->
+    <SearchCity @location-selected="handleLocationSelected" />
+
+    <!-- Pass the selectedPlace as a prop to WeatherForecast -->
+    <WeatherForecast :selectedPlace="selectedPlace" />
   </div>
 </template>
 
