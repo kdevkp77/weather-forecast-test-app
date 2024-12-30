@@ -41,11 +41,13 @@ export default class WeatherForecast extends Vue {
   
   weatherData: any = null;
   error: string | null = null;
+  loading = false; // New loading state
 
   @Watch('selectedPlace', { immediate: true, deep: true })
   async onSelectedPlaceChange(newVal: { lat: number; lng: number } | null) {
     if (newVal) {
       try {
+        this.loading = true; // Start loading
         this.error = null;
         this.weatherData = await this.weatherService.getWeatherForecast(
           newVal.lat,
@@ -54,6 +56,8 @@ export default class WeatherForecast extends Vue {
       } catch (err) {
         this.weatherData = null;
         this.error = 'Failed to fetch weather forecast. Please try again.';
+      } finally {
+        this.loading = false; // Stop loading
       }
     }
   }

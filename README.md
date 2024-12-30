@@ -14,6 +14,14 @@
     yarn
     yarn serve
 
+### docker
+    
+    # Build the Docker images
+    sudo docker-compose build
+
+    # Start the containers
+    sudo docker-compose up
+
 ## TODO:
 
 - Please *copy* the project into your own github account and work on it there.
